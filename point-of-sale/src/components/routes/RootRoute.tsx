@@ -42,36 +42,40 @@ export const RootRoute: FC = () => {
     }, [params]);
 
     return (
-        <ThemeProvider>
-            <FullscreenProvider>
-                {recipient && label ? (
-                    <ConnectionProvider endpoint={DEVNET_ENDPOINT}>
-                        <WalletProvider wallets={wallets} autoConnect={connectWallet}>
-                            <WalletModalProvider>
-                                <ConfigProvider
-                                    recipient={recipient}
-                                    label={label}
-                                    symbol="SOL"
-                                    icon={<SOLIcon />}
-                                    decimals={9}
-                                    minDecimals={1}
-                                    connectWallet={connectWallet}
-                                >
-                                    <TransactionsProvider>
-                                        <PaymentProvider>
-                                            <Outlet />
-                                        </PaymentProvider>
-                                    </TransactionsProvider>
-                                </ConfigProvider>
-                            </WalletModalProvider>
-                        </WalletProvider>
-                    </ConnectionProvider>
-                ) : (
-                    <div className={css.logo}>
-                        <SolanaPayLogo width={240} height={88} />
-                    </div>
-                )}
-            </FullscreenProvider>
-        </ThemeProvider>
+        <>
+            <ThemeProvider>
+                <FullscreenProvider>
+                    {recipient && label ? (
+                        <>
+                            <ConnectionProvider endpoint={DEVNET_ENDPOINT}>
+                                <WalletProvider wallets={wallets} autoConnect={connectWallet}>
+                                    <WalletModalProvider>
+                                        <ConfigProvider
+                                            recipient={recipient}
+                                            label={label}
+                                            symbol="USDC"
+                                            icon={<SOLIcon />}
+                                            decimals={6}
+                                            minDecimals={1}
+                                            connectWallet={connectWallet}
+                                        >
+                                            <TransactionsProvider>
+                                                <PaymentProvider>
+                                                    <Outlet />
+                                                </PaymentProvider>
+                                            </TransactionsProvider>
+                                        </ConfigProvider>
+                                    </WalletModalProvider>
+                                </WalletProvider>
+                            </ConnectionProvider>
+                        </>
+                    ) : (
+                        <div className={css.logo}>
+                            <SolanaPayLogo width={240} height={88} />
+                        </div>
+                    )}
+                </FullscreenProvider>
+            </ThemeProvider>
+        </>
     );
 };

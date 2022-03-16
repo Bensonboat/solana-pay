@@ -6,6 +6,7 @@ import { NewRoute } from './routes/NewRoute';
 import { PendingRoute } from './routes/PendingRoute';
 import { RootRoute } from './routes/RootRoute';
 import { TransactionsRoute } from './routes/TransactionsRoute';
+import { DoSolComponents } from './doSol';
 
 export const Router: FC = () => {
     return (
@@ -17,6 +18,7 @@ export const Router: FC = () => {
                     <Route path="pending" element={<PendingRoute />} />
                     <Route path="confirmed" element={<ConfirmedRoute />} />
                     <Route path="transactions" element={<TransactionsRoute />} />
+                    <Route path="select" element={<DoSolComponents />} />
                 </Route>
             </Routes>
         </BrowserRouter>
